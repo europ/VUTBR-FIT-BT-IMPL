@@ -35,4 +35,5 @@
 14. The virtual machine is set.
     - you can connect to the virtual machine from outside
         - search for the IP via executing `ip addr show` in the virtual machine
-        - execute `ssh root@192.168.56.X` in host not virtual machine
+        - execute `ssh root@192.168.X.X` in host not virtual machine
+15. Continue in [README.md](https://github.com/europ/VUTBR-FIT-BT-IMPL/blob/master/README.md)
