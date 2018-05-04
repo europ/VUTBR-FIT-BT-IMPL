@@ -23,3 +23,4 @@ rbenv rehash
 curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
 
 echo -e "\033[1m\033[32mSUCCESS\033[0m"
+exit 0
