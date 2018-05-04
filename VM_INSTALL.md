@@ -15,15 +15,24 @@
     - password `root`
 11. Go to `/etc/sysconfig/network-scripts`
     - execute `cd /etc/sysconfig/network-scripts`
-12. Open configuration file for network interface
-    - execute `ip addr show` and find the network interface name e.g. `enp0s3`
-    - open the configuration file `ifcfg-enp0s3` of `enp0s3` via text editor eg `vi`
-        - execute `vi ifcfg-enp0s3`
-13. Change the last line of file
-    - change the `ONBOOT=no` to `ONBOOT=yes`
-14. Save and exit and reboot
+12. Edit configuration file for two network interfaces
+    - execute `ip addr show` and find the two network interface names e.g. `enp0s3` and `enp0s8`
+    - edit `enp0s3`
+        - open the configuration file `ifcfg-enp0s3` via text editor eg `vi`
+            - execute `vi ifcfg-enp0s3`
+        - change the last line of file
+            - change the `ONBOOT=no` to `ONBOOT=yes`
+    - edit `enp0s8`
+        - open the configuration file `ifcfg-enp0s8` via text editor eg `vi`
+            - execute `vi ifcfg-enp0s8`
+        - change the last line of file
+            - change the `ONBOOT=no` to `ONBOOT=yes`
+13. Save and exit and reboot
     - press the escape button
     - write `:x`
     - press enter
     - execute `reboot`
-15. The virtual machine is set
+14. The virtual machine is set.
+    - you can connect to the virtual machine from outside
+        - search for the IP via executing `ip addr show` in the virtual machine
+        - execute `ssh root@192.168.56.X` in host not virtual machine

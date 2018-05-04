@@ -5,9 +5,10 @@ Setup:
 2. Download [CentOS 7](https://www.centos.org/)
     - [CentOS-7-x86_64-Minimal-1708.iso](http://isoredirect.centos.org/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1708.iso)
 3. [Set up the virtual machine](https://github.com/europ/VUTBR-FIT-BT-IMPL/blob/master/VM_SETUP.md)
-4. Execute the following commands:
-    1. `cd /root`
-    2. `yum install -y git`
-    3. `git clone https://github.com/europ/VUTBR-FIT-BT-IMPL.git`
-    4. `cd VUTBR-FIT-BT-IMPL`
-    5. `./init.sh`
+4. Execute the following commands in the following order from top to bottom:
+    - `cd /root`
+    - `yum install -y git`
+    - `git clone https://github.com/europ/VUTBR-FIT-BT-IMPL.git`
+    - `cd VUTBR-FIT-BT-IMPL`
+    - `./install.sh`
+    - `./rbenv.sh`
