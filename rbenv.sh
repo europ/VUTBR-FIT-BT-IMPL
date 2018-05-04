@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ `id -u` -ne 0 ]; then
-    echo "Please run root"
+    echo -e "\033[1m\033[31mPlease run as root\033[0m"
     exit 1
 fi
 
@@ -21,3 +21,5 @@ gem install bundler
 rbenv rehash
 
 curl -fsSL https://github.com/rbenv/rbenv-installer/raw/master/bin/rbenv-doctor | bash
+
+echo -e "\033[1m\033[32mSUCCESS\033[0m"
