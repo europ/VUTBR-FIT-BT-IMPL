@@ -1,0 +1,64 @@
+# Service credentials
+bugzilla_credentials:
+  url:
+  username:
+  password:
+github_credentials:
+  username: europbot
+  password: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+influxdb_credentials:
+  database:
+  username:
+  password:
+pivotal_credentials:
+  token:
+
+travis_monitor:
+  gitter_token: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  branches:
+    - repo: ManageIQ/miq_bot
+      branch: master
+      gitter_room: europbot/testroom
+
+# General settings
+bugzilla:
+  product:
+grafana:
+  url:
+
+# Worker settings
+code_analyzer:
+  enabled_repos: []
+diff_content_checker: {}
+github_notification_monitor:
+  included_repos:
+    - "xtest123/testrepo"
+  repo_names:
+    - "xtest123/testrepo"
+
+merge_target_titler:
+  enabled_repos:
+    - "xtest123/testrepo"
+  included_repos:
+    - "xtest123/testrepo"
+
+path_based_labeler:
+  rules:
+    xtest123/testrepo: []
+
+pivotal_pr_checker:
+  enabled_repos:
+    - "xtest123/testrepo"
+  included_repos:
+    - "xtest123/testrepo"
+
+stale_issue_marker:
+  enabled_repos:
+    - "xtest123/testrepo"
+  included_repos:
+    - "xtest123/testrepo"
+
+wip_labeler:
+  enabled_repos:
+    - "xtest123/testrepo"
+  included_repos:

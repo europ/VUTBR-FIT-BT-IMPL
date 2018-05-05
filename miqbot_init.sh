@@ -5,6 +5,8 @@ if [ `id -u` -ne 0 ]; then
     exit 1
 fi
 
+CWD=`pwd`
+
 gem install pry
 gem install pry-byebug
 gem install awesome_print
@@ -36,6 +38,12 @@ sed -i "s/^\(local\s*all\s*all\s*\)trust$/\1md5/g" /var/lib/pgsql/data/pg_hba.co
 sed -i "s/^\(host\s*all\s*all\s*.*\s*\)ident$/\1md5/g" /var/lib/pgsql/data/pg_hba.conf
 systemctl restart postgresql.service
 bundle exec rake db:setup
+
+echo -e "\033[32mPostgreSQL done.\033[0m"
+
+bundle exec rails runner 'Repo.create_from_github!("xtest123/testrepo", "https://github.com/xtest123/testrepo.git")'
+cp Procfile.tmpl Procfile
+cp $CWD/settings.yml ~/miqbot/config/settings/development.local.yml
 
 echo -e "\033[1m\033[32mSUCCESS\033[0m"
 exit 0
