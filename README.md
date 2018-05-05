@@ -14,3 +14,14 @@
     - `./install.sh`
     - `./rbenv.sh`
     - `./miqbot_init.sh`
+    - Start the bot:
+        - Start all Sidekiq workers (`cd ~/miq_bot`)
+            - `foreman start`
+        - Start Sidekiq workers separately (open 3 shells and `cd ~/miq_bot`)
+            - `bundle exec rails s -b 0.0.0.0 -p 3000`
+            - `bundle exec sidekiq -q miq_bot`
+            - `bundle exec sidekiq -q miq_bot_glacial`
+
+TODO: token => github + gitter
+
+To check the pull request features you have to find the pertaining branch of the pull request and git checkout on it.

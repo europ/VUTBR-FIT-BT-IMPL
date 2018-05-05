@@ -14,6 +14,7 @@ gem install awesome_print
 git clone https://github.com/europ/miq_bot.git ~/miq_bot
 
 cd ~/miq_bot
+git checkout master
 
 bundle install
 
