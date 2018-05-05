@@ -31,7 +31,13 @@ systemctl restart postgresql.service
 bundle exec rake db:setup
 
 # REDIS
-# TODO
+yum install -y epel-release
+yum -y update
+yum install -y redis
+systemctl start redis
+systemctl enable redis
+echo -e "\033[32mRedis PING\033[0m"
+redis-cli ping
 
 echo -e "\033[1m\033[32mSUCCESS\033[0m"
 exit 0
