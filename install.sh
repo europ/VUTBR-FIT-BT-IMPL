@@ -11,7 +11,9 @@ yum install -y \
     centos-release-scl git-core zlib zlib-devel gcc-c++ patch readline libyaml-devel cmake   \
     openssl-devel make bzip2 autoconf automake libtool bison curl sqlite-devel python-devel  \
     postgresql-devel postgresql-libs postgresql-server postgresql-contrib readline-devel     \
-    vim memcached libffi-devel
+    vim memcached libffi-devel epel-release
+
+yum -y update
 
 systemctl enable memcached
 systemctl start memcached

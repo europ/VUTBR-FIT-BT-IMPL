@@ -15,6 +15,13 @@ cd ~/miq_bot
 
 bundle install
 
+# REDIS
+yum install -y redis # Prerequisites => execution of install.sh (yum install epel-release && yum update)
+systemctl start redis
+systemctl enable redis
+echo -e "\033[32mRedis PING\033[0m"
+redis-cli ping
+
 # PSQL
 cp config/database.tmpl.yml config/database.yml
 sed -i "s/username:.*/username: miqbot/g" config/database.yml
@@ -29,15 +36,6 @@ sed -i "s/^\(local\s*all\s*all\s*\)trust$/\1md5/g" /var/lib/pgsql/data/pg_hba.co
 sed -i "s/^\(host\s*all\s*all\s*.*\s*\)ident$/\1md5/g" /var/lib/pgsql/data/pg_hba.conf
 systemctl restart postgresql.service
 bundle exec rake db:setup
-
-# REDIS
-yum install -y epel-release
-yum -y update
-yum install -y redis
-systemctl start redis
-systemctl enable redis
-echo -e "\033[32mRedis PING\033[0m"
-redis-cli ping
 
 echo -e "\033[1m\033[32mSUCCESS\033[0m"
 exit 0
