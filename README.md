@@ -14,9 +14,9 @@
     - `./install.sh`
     - `./rbenv.sh`
     - `./miqbot_init.sh`
-    - Start the bot:
+    - Start the bot (`git checkout master` - to check that everything works correctly):
         - Start all Sidekiq workers (`cd ~/miq_bot`)
-            - `foreman start`
+            - `bundle exec foreman start`
         - Start Sidekiq workers separately (open 3 shells and `cd ~/miq_bot`)
             - `bundle exec rails s -b 0.0.0.0 -p 3000`
             - `bundle exec sidekiq -q miq_bot`
