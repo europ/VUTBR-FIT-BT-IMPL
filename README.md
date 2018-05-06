@@ -61,6 +61,11 @@ Rewrite my informations by yours in:
     1. `service firewalld stop`
     2. `bundle exec rails s -b 0.0.0.0 -p 3000`
 
+- At bot termination via SIGINT it is possible to get him into unstable state. Besides that, you may also face an "actor crashed" error too. This could be solved by reseting the bot which also require to launch him firstly on master branch.
+    1. `~/VUTBR-FIT-BT-IMPL/miqbot_reset.sh`
+    2. `cd ~/miq_bot && git checkout master`
+    3. Launch
+
 ### Pull Requests
 
 To check the pull request functionality you have to `git checkout` the pertaining branch of the pull request which can be found in the footnotes of the [thesis](https://github.com/europ/VUTBR-FIT-BT/blob/master/PDF/thesis.pdf).
