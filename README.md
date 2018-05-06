@@ -4,7 +4,7 @@
 
 **Bot is customized to MY account credentials!**
 
-To change it on yours, please see the [*Customization*](https://github.com/europ/VUTBR-FIT-BT-IMPL#customization) section.
+To change it on yours, please see the [*customization*](https://github.com/europ/VUTBR-FIT-BT-IMPL#customization) section.
 
 #### Credentials
 
@@ -17,6 +17,7 @@ To change it on yours, please see the [*Customization*](https://github.com/europ
 - Your own forked repository from the organization's repository
     - to create a pull request which will be inspected by the bot (bot reacts to the PR's comments)
 - [Gitter personal access token](https://developer.gitter.im/apps)
+    - do not forget to sign in
 - Gitter room
 
 #### Customization
@@ -50,9 +51,15 @@ Rewrite my informations by yours in:
         - Start all Sidekiq workers together
             - `bundle exec foreman start`
         - Start Sidekiq workers separately (open 3 shells)
-            - `bundle exec rails s -b 0.0.0.0 -p 3000`
+            - `bundle exec rails s`
             - `bundle exec sidekiq -q miq_bot`
             - `bundle exec sidekiq -q miq_bot_glacial`
+
+**NOTE**
+
+- If you would like to access the Sidekiq idle (dashboard) from your outer browser (not in virtual machine) then you have to launch the `bundle exec rails s` on address `0.0.0.0` inside of the virtual machine and on some port e.g. `3000`. After this you will be able to access the Sidekiq idle via `http://<VM_IP>:<PORT>` e.g. `http://192.168.56.12:3000`.
+    1. `service firewalld stop`
+    2. `bundle exec rails s -b 0.0.0.0 -p 3000`
 
 ### Pull Requests
 
