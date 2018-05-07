@@ -25,4 +25,4 @@
 19. For `Attached to:` select `Host-only Adapter`
 20. Click on `OK`
 21. Again select the `test` virtual machine and click on `Start`
-22. Follow the instruction in [`Install Wizard`](https://github.com/europ/VUTBR-FIT-BT-IMPL/blob/master/VM_INSTALL.md)
+22. Follow the instruction in [VM_INSTALL.md](https://github.com/europ/VUTBR-FIT-BT-IMPL/blob/master/VM_INSTALL.md)
