@@ -23,6 +23,7 @@ To change it on yours, please see the [*customization*](https://github.com/europ
 #### Customization
 
 Rewrite my informations by yours in:
+
 - initializing script `miqbot_init.sh`
     - occurrence of `xtest123/testrepo` to yours `organization/repository`
 - resetting script `miqbot_reset.sh`

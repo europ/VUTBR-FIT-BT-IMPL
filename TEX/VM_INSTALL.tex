@@ -1,0 +1,138 @@
+\subsection{Install Wizard}\label{install-wizard}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Choose \texttt{Install\ CentOS\ 7} option and press enter
+\item
+  Select language or click on \texttt{Continue}
+\item
+  Click on \texttt{INSTALLATION\ DESTINATION}
+\item
+  Select the \texttt{ATA\ VBOX\ HARDDISK} and click on \texttt{Done}
+\item
+  Click on \texttt{Begin\ Installation}
+\item
+  Click on \texttt{ROOT\ PASSWORD}
+\item
+  Set \texttt{Root\ Password} and \texttt{Confirm} to \texttt{root} and
+  double click on \texttt{Done}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    due to short password is required to double click on \texttt{Done}
+  \end{itemize}
+\item
+  Wait until installation will finish
+\item
+  Click on \texttt{Reboot}
+\item
+  After the reboot log into the virtual machine
+
+  \begin{itemize}
+  \tightlist
+  \item
+    username \texttt{root}
+  \item
+    password \texttt{root}
+  \end{itemize}
+\item
+  Go to \texttt{/etc/sysconfig/network-scripts}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    execute \texttt{cd\ /etc/sysconfig/network-scripts}
+  \end{itemize}
+\item
+  Edit configuration file for two network interfaces
+
+  \begin{itemize}
+  \tightlist
+  \item
+    execute \texttt{ip\ addr\ show} and find the two network interface
+    names e.g. \texttt{enp0s3} and \texttt{enp0s8}
+  \item
+    edit \texttt{enp0s3}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      open the configuration file \texttt{ifcfg-enp0s3} via text editor
+      eg \texttt{vi}
+
+      \begin{itemize}
+      \tightlist
+      \item
+        execute \texttt{vi\ ifcfg-enp0s3}
+      \end{itemize}
+    \item
+      change the last line of file
+
+      \begin{itemize}
+      \tightlist
+      \item
+        change the \texttt{ONBOOT=no} to \texttt{ONBOOT=yes}
+      \end{itemize}
+    \end{itemize}
+  \item
+    edit \texttt{enp0s8}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      open the configuration file \texttt{ifcfg-enp0s8} via text editor
+      eg \texttt{vi}
+
+      \begin{itemize}
+      \tightlist
+      \item
+        execute \texttt{vi\ ifcfg-enp0s8}
+      \end{itemize}
+    \item
+      change the last line of file
+
+      \begin{itemize}
+      \tightlist
+      \item
+        change the \texttt{ONBOOT=no} to \texttt{ONBOOT=yes}
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+\item
+  Save and exit and reboot
+
+  \begin{itemize}
+  \tightlist
+  \item
+    press the escape button
+  \item
+    write \texttt{:x}
+  \item
+    press enter
+  \item
+    execute \texttt{reboot}
+  \end{itemize}
+\item
+  The virtual machine is set.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    you can connect to the virtual machine from outside
+
+    \begin{itemize}
+    \tightlist
+    \item
+      search for the IP via executing \texttt{ip\ addr\ show} in the
+      virtual machine
+    \item
+      execute \texttt{ssh\ root@192.168.X.X} in host not virtual machine
+    \end{itemize}
+  \end{itemize}
+\item
+  Continue in
+  \href{https://github.com/europ/VUTBR-FIT-BT-IMPL/blob/master/README.md}{README.md}
+\end{enumerate}

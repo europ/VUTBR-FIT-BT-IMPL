@@ -1,0 +1,73 @@
+\subsection{Setup Wizard}\label{setup-wizard}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Run installed \texttt{Oracle\ VM\ VirtualBox}
+\item
+  Click on \texttt{New}
+\item
+  Customize the virtual machine
+
+  \begin{itemize}
+  \tightlist
+  \item
+    add name \texttt{test}
+  \item
+    choose type \texttt{Linux}
+  \item
+    choose version \texttt{Other\ Linux\ (64bit)}
+  \end{itemize}
+\item
+  Set memory size e.g. \texttt{4096} MB
+\item
+  Choose \texttt{Create\ a\ virtual\ hard\ disk\ now} and click on
+  \texttt{Create}
+\item
+  Choose \texttt{VDI\ (VirtualBox\ Disk\ Image)} and press \texttt{Next}
+\item
+  Choose \texttt{Dynamically\ allocated} and press \texttt{Next}
+\item
+  Set the size of the virtual hard disk to \texttt{30\ GB} and click on
+  \texttt{Create}
+\item
+  Select the \texttt{test} virtual machine and click on
+  \texttt{Settings}
+\item
+  Choose \texttt{Storage} option in the left side panel
+\item
+  In \texttt{Storage\ Tree} select the \texttt{Empty} option
+\item
+  In \texttt{Attributes} click on the button with CD icon
+\item
+  Select the \texttt{Choose\ Virtual\ Optical\ Disk\ File...} and
+  navigate to the downloaded ISO file
+
+  \begin{itemize}
+  \tightlist
+  \item
+    navigate to \texttt{CentOS-7-x86\_64-Minimal-1708.iso}
+  \end{itemize}
+\item
+  Click on \texttt{OK}
+\item
+  Again select the \texttt{test} virtual machine and click on
+  \texttt{Settings}
+\item
+  Choose \texttt{Network} option in the left side panel
+\item
+  Select the \texttt{Adapter\ 2} tab
+\item
+  Check the box option for \texttt{Enable\ Network\ Adapter}
+\item
+  For \texttt{Attached\ to:} select \texttt{Host-only\ Adapter}
+\item
+  Click on \texttt{OK}
+\item
+  Again select the \texttt{test} virtual machine and click on
+  \texttt{Start}
+\item
+  Follow the instruction in
+  \href{https://github.com/europ/VUTBR-FIT-BT-IMPL/blob/master/VM_INSTALL.md}{\texttt{Install\ Wizard}}
+\end{enumerate}

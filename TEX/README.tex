@@ -1,0 +1,230 @@
+\subsection{\texorpdfstring{Brno University of Technology - Faculty of
+Information TechnologyBachelor's Thesis -
+Implementation2017/2018}{Brno University of Technology - Faculty of Information Technology Bachelor's Thesis - Implementation 2017/2018}}\label{brno-university-of-technology---faculty-of-information-technology-bachelors-thesis---implementation-20172018}
+
+\subsubsection{Requirements}\label{requirements}
+
+\textbf{Bot is customized to MY account credentials!}
+
+To change it on yours, please see the
+\href{https://github.com/europ/VUTBR-FIT-BT-IMPL\#customization}{\emph{customization}}
+section.
+
+\paragraph{Credentials}\label{credentials}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://github.com/settings/tokens}{GitHub personal access
+  token}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    full access if possible to avoid unsolicited access problems
+  \end{itemize}
+\item
+  Github organization
+
+  \begin{itemize}
+  \tightlist
+  \item
+    to be a member
+  \end{itemize}
+\item
+  Organization's repository
+
+  \begin{itemize}
+  \tightlist
+  \item
+    the bot is set to check this repository (pull requests / builds /
+    etc.)
+  \end{itemize}
+\item
+  Your own forked repository from the organization's repository
+
+  \begin{itemize}
+  \tightlist
+  \item
+    to create a pull request which will be inspected by the bot (bot
+    reacts to the PR's comments)
+  \end{itemize}
+\item
+  \href{https://developer.gitter.im/apps}{Gitter personal access token}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    do not forget to sign in
+  \end{itemize}
+\item
+  Gitter room
+\end{itemize}
+
+\paragraph{Customization}\label{customization}
+
+Rewrite my informations by yours in:
+
+\begin{itemize}
+\tightlist
+\item
+  initializing script \texttt{miqbot\_init.sh}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    occurrence of \texttt{xtest123/testrepo} to yours
+    \texttt{organization/repository}
+  \end{itemize}
+\item
+  resetting script \texttt{miqbot\_reset.sh}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    occurrence of \texttt{xtest123/testrepo} to yours
+    \texttt{organization/repository}
+  \end{itemize}
+\item
+  configuration file
+  \texttt{\textasciitilde{}/miq\_bot/config/settings/development.local.yml}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    github\_credentials -\textgreater{} username
+  \item
+    github\_credentials -\textgreater{} password
+  \item
+    occurrence of \texttt{xtest123/testrepo} to yours
+    \texttt{organization/repository}
+  \end{itemize}
+\end{itemize}
+
+\subsubsection{Setup}\label{setup}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Download and install \href{https://www.virtualbox.org/}{Oracle VM
+  VirtualBox}
+\item
+  Download \href{https://www.centos.org/}{CentOS 7}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{http://isoredirect.centos.org/centos/7/isos/x86_64/CentOS-7-x86_64-Minimal-1708.iso}{CentOS-7-x86\_64-Minimal-1708.iso}
+  \end{itemize}
+\item
+  \href{https://github.com/europ/VUTBR-FIT-BT-IMPL/blob/master/VM_SETUP.md}{Set
+  up the virtual machine}
+\item
+  Execute the following commands in the following order from top to
+  bottom:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \texttt{cd\ /root}
+  \item
+    \texttt{yum\ install\ -y\ git}
+  \item
+    \texttt{git\ clone\ https://github.com/europ/VUTBR-FIT-BT-IMPL.git}
+  \item
+    \texttt{cd\ VUTBR-FIT-BT-IMPL}
+  \item
+    \texttt{./install.sh}
+  \item
+    \texttt{./rbenv.sh}
+  \item
+    \texttt{./miqbot\_init.sh}
+  \item
+    \texttt{cd\ \textasciitilde{}/miq\_bot}
+  \item
+    Start the bot (\texttt{git\ checkout\ master} - to check that
+    everything works correctly):
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Start all Sidekiq workers together
+
+      \begin{itemize}
+      \tightlist
+      \item
+        \texttt{bundle\ exec\ foreman\ start}
+      \end{itemize}
+    \item
+      Start Sidekiq workers separately (open 3 shells)
+
+      \begin{itemize}
+      \tightlist
+      \item
+        \texttt{bundle\ exec\ rails\ s}
+      \item
+        \texttt{bundle\ exec\ sidekiq\ -q\ miq\_bot}
+      \item
+        \texttt{bundle\ exec\ sidekiq\ -q\ miq\_bot\_glacial}
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+\end{enumerate}
+
+\textbf{NOTE}
+
+\begin{itemize}
+\tightlist
+\item
+  If you would like to access the Sidekiq idle (dashboard) from your
+  outer browser (not in virtual machine) then you have to launch the
+  \texttt{bundle\ exec\ rails\ s} on address \texttt{0.0.0.0} inside of
+  the virtual machine and on some port e.g. \texttt{3000}. After this
+  you will be able to access the Sidekiq idle via
+  \texttt{http://\textless{}VM\_IP\textgreater{}:\textless{}PORT\textgreater{}}
+  e.g. \texttt{http://192.168.56.12:3000}.
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    \texttt{service\ firewalld\ stop}
+  \item
+    \texttt{bundle\ exec\ rails\ s\ -b\ 0.0.0.0\ -p\ 3000}
+  \end{enumerate}
+\item
+  At bot termination via SIGINT it is possible to get him into unstable
+  state. Besides that, you may also face an ``actor crashed'' error too.
+  This could be solved by reseting the bot which also require to launch
+  him firstly on master branch.
+
+  \begin{enumerate}
+  \def\labelenumi{\arabic{enumi}.}
+  \tightlist
+  \item
+    \texttt{\textasciitilde{}/VUTBR-FIT-BT-IMPL/miqbot\_reset.sh}
+  \item
+    \texttt{cd\ \textasciitilde{}/miq\_bot\ \&\&\ git\ checkout\ master}
+  \item
+    Launch
+  \end{enumerate}
+\end{itemize}
+
+\subsubsection{Pull Requests}\label{pull-requests}
+
+To check the pull request functionality you have to
+\texttt{git\ checkout} the pertaining branch of the pull request which
+can be found in the footnotes of the
+\href{https://github.com/europ/VUTBR-FIT-BT/blob/master/PDF/thesis.pdf}{thesis}.
+
+\subsubsection{ManageIQ Bot}\label{manageiq-bot}
+
+The original setup of the
+\href{https://github.com/ManageIQ/miq_bot}{ManageIQ bot} can be found
+\href{https://github.com/ManageIQ/miq_bot\#development}{here}.
+
+\subsubsection{Bachelor's Thesis}\label{bachelors-thesis}
+
+Bachelor's Thesis is available
+\href{https://github.com/europ/VUTBR-FIT-BT}{here}.
