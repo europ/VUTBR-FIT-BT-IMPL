@@ -29,8 +29,8 @@ Rewrite my informations by yours in:
 - resetting script `miqbot_reset.sh`
     - occurrence of `xtest123/testrepo` to yours `organization/repository`
 - configuration file `~/miq_bot/config/settings/development.local.yml`
-    - github_credentials -> username
-    - github_credentials -> password
+    - github_credentials &rarr; username
+    - github_credentials &rarr; password
     - occurrence of `xtest123/testrepo` to yours `organization/repository`
 
 ### Setup
