@@ -2,6 +2,8 @@
 
 ### Requirements
 
+**Bot is working under Linux only!**
+
 **Bot is customized to MY account credentials!**
 
 To change it on yours, please see the [*customization*](https://github.com/europ/VUTBR-FIT-BT-IMPL#customization) section.
